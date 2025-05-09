@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fargate-http-echo
+spec:
+  selector:
+    matchLabels:
+      app: http-echo
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: http-echo
+    spec:
+      serviceAccountName: test-irsa
+      containers:
+      - name: main
+        image: swr.cn-north-4.myhuaweicloud.com/ddn-k8s/docker.io/hashicorp/http-echo:1.0
+        args:
+        - "-text=success"
+        ports:
+        - containerPort: 5678

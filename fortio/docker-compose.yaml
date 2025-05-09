@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  fortio-server:
+    # image: fortio/fortio
+    image: public.ecr.aws/v6x6b8s5/fortio:1.16.0
+    container_name: fortio
+    ports:
+      - "8080:8080"
+      - "8079:8079"
+    restart: always

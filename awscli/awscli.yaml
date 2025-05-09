@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: awscli-tool
+  name: awscli-tool
+spec:
+  selector:
+    matchLabels:
+      app: awscli-tool
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: awscli-tool
+    spec:
+      serviceAccountName: test-irsa
+      containers:
+      - name: awscli
+        command:
+        - sleep
+        args:
+        - "3600"
+        image: public.ecr.aws/aws-cli/aws-cli:latest
+        imagePullPolicy: IfNotPresent
