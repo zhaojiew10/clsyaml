@@ -33,7 +33,9 @@ spec:
     - protocol: TCP
       port: 8080
       targetPort: 8080
+      name: web
     - protocol: TCP
       port: 8079
       targetPort: 8079
+      name: internal
   type: NodePort
